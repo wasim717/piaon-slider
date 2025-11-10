@@ -21,11 +21,13 @@
             width: 100vw;
             height: 80vh;
             position: relative;
+            overflow: hidden;
         }
 
         .swiper {
             width: 100%;
             height: 100%;
+            overflow: visible;
         }
 
         .swiper-wrapper {
@@ -40,6 +42,7 @@
             font-weight: bold;
             color: white;
             text-align: center;
+            transition: all 300ms ease;
         }
 
         .swiper-slide-content {
@@ -80,6 +83,7 @@
             }
 
             .swiper-slide {
+                width: calc(100vw - 60px);
                 height: 80vh;
             }
 
@@ -103,44 +107,57 @@
 
         @media (min-width: 768px) and (max-width: 1279px) {
             .swiper-slide {
+                width: 25vw;
                 height: 24vh;
             }
 
             .swiper-slide-active {
+                width: 50vw;
                 height: 80vh;
             }
 
             .swiper-button-prev {
-                left: 10px;
+                left: calc(12.5vw);
                 top: calc(80vh - 24vh - 50px);
+                z-index: 10;
             }
 
             .swiper-button-next {
-                right: 10px;
+                right: calc(12.5vw);
+                left: auto;
                 top: calc(80vh - 24vh - 50px);
+                z-index: 10;
             }
         }
 
         @media (min-width: 1280px) {
             .swiper-slide {
+                width: calc((25vw - 20px) / 1.5);
                 height: 24vh;
             }
 
             .swiper-slide-active {
+                width: 50vw;
                 height: 80vh;
             }
 
+            .swiper-slide-prev,
+            .swiper-slide-next {
+                width: calc((25vw - 20px) / 1.5);
+                height: 24vh;
+            }
+
             .swiper-button-prev {
-                left: calc(25vw / 2 + 5px);
+                left: calc((25vw - 20px) / 1.5 + (25vw - 20px) / 3 + 10px);
                 top: calc(80vh - 24vh - 50px);
-                transform: translateX(-50%);
+                z-index: 10;
             }
 
             .swiper-button-next {
-                right: calc(25vw / 2 + 5px);
+                right: calc((25vw - 20px) / 1.5 + (25vw - 20px) / 3 + 10px);
                 left: auto;
                 top: calc(80vh - 24vh - 50px);
-                transform: translateX(50%);
+                z-index: 10;
             }
         }
     </style>
@@ -186,23 +203,10 @@
             speed: 300,
             spaceBetween: 10,
             centeredSlides: true,
+            slidesPerView: 'auto',
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                0: {
-                    slidesPerView: 1,
-                    centeredSlides: true,
-                },
-                768: {
-                    slidesPerView: 3,
-                    centeredSlides: true,
-                },
-                1280: {
-                    slidesPerView: 5,
-                    centeredSlides: true,
-                }
             }
         });
     </script>
